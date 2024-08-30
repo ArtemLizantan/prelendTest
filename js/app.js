@@ -1,6 +1,10 @@
-if (window.innerWidth <= 556) {
-  return;
-} else {
+function initializeParticles() {
+  if (window.innerWidth <= 556) {
+    // Clear particles or handle the case when window width is small
+    tsParticles.load("tsparticles", {}); // Clear particles
+    return;
+  }
+
   const particlesConfig = {
     particles: {
       number: {
@@ -42,3 +46,9 @@ if (window.innerWidth <= 556) {
 
   tsParticles.load("tsparticles", particlesConfig);
 }
+
+// Initialize particles on page load
+window.addEventListener('load', initializeParticles);
+
+// Optionally, update particles on window resize
+window.addEventListener('resize', initializeParticles);
