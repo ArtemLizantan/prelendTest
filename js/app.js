@@ -1,7 +1,5 @@
 function initializeParticles() {
   if (window.innerWidth <= 556) {
-    // Clear particles or handle the case when window width is small
-    tsParticles.load("tsparticles", {}); // Clear particles
     return;
   }
 
