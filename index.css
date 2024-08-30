@@ -1,0 +1,409 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Убираем внутренние отступы */
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Убираем внешние отступы */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Выставляем основные настройки по-умолчанию для body */
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* Удаляем стандартную стилизацию для всех ul и il, у которых есть атрибут class*/
+ul[class],
+ol[class] {
+  list-style: none;
+}
+
+/* Элементы a, у которых нет класса, сбрасываем до дефолтных стилей */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Упрощаем работу с изображениями */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Указываем понятную периодичность в потоке данных у article*/
+article > * + * {
+  margin-top: 1em;
+}
+
+/* Наследуем шрифты для инпутов и кнопок */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+/* Удаляем все анимации и переходы для людей, которые предпочитай их не использовать */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes flareAnimation {
+  0% {
+    left: -150%;
+  }
+  100% {
+    left: 150%;
+  }
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  background: #030508;
+  font-size: 1rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+#tsparticles {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  margin: 0;
+  z-index: 100;
+}
+
+canvas {
+  width: 100vw;
+  height: 100vh;
+}
+
+.prelend {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.prelend__body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.prelend__right {
+  width: 60vw;
+  height: 100vh;
+  position: relative;
+}
+
+.prelend__right::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -5%;
+  width: 30%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5)
+  ); /* Плавный переход от тени к прозрачности */
+  filter: blur(20px); /* Размытие для эффекта тени */
+  z-index: -1; /* Чтобы тень была под основным контентом */
+}
+
+.person-img {
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.prelend__left {
+  width: 40vw;
+  padding: 4vw;
+  position: relative;
+  z-index: 100;
+}
+
+.prelend__leftWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.prelend__left h1 {
+  font-weight: 700;
+  font-size: 4vh;
+  color: #838383;
+  max-width: 33vw;
+}
+
+.prelend__left a {
+  background: linear-gradient(180deg, #3347ff 0%, #044ffe 42%, #030036 100%);
+  border: 1px solid #0ddaff;
+  border-radius: 3vw;
+  padding: 1.5vw 4vw;
+  box-shadow: 0 0.208vw 0.521vw 0 #168dff, inset 0 0.208vw 0.521vw 0 #fff;
+  font-weight: 700;
+  font-size: 1vw;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 0 0.5vw 0.5vw 0 rgba(0, 0, 0, 0.25);
+  transition: all 0.5s ease-in-out;
+  position: relative;
+  overflow-x: hidden;
+  display: block;
+}
+
+.prelend__left a span {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 45px;
+  transform: skewX(-45deg);
+  animation: flareAnimation;
+  left: -150%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.4)
+  );
+  animation: flareAnimation 2s infinite linear;
+}
+
+@media (min-width: 991px) {
+  .prelend__left a:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0.208vw 0.321vw 0 #168dff, inset 0 0.508vw 0.521vw 0 #fff;
+  }
+}
+
+.logo1,
+.logo2 {
+  position: absolute;
+  z-index: 100;
+  animation-duration: 5s; /* Продолжительность анимации */
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  width: 30vw;
+  height: 30vh;
+}
+
+.logo1 {
+  top: 10%;
+  right: 20%;
+  animation-name: moveRight;
+}
+
+.logo2 {
+  bottom: 2%;
+  animation-name: moveLeft;
+}
+
+@keyframes moveRight {
+  0% {
+    right: 20%;
+  }
+  100% {
+    right: 40%; /* Сдвиг вправо на 10% */
+  }
+}
+
+@keyframes moveLeft {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: 20%; /* Сдвиг влево на 10% */
+  }
+}
+
+.person-mobile {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .prelend__body {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .person-mobile {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+    background-position: 25% 75%;
+  }
+  .prelend__right {
+    width: 100vw;
+    position: absolute;
+    z-index: -1;
+    height: 100vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .prelend__left {
+    width: 100%;
+    height: 100%;
+  }
+  .prelend__leftWrap {
+    width: 100%;
+    height: 100%;
+
+    align-items: center;
+    justify-content: center;
+  }
+  .prelend__leftWrap h1 {
+    max-width: unset;
+  }
+  .prelend__leftWrap a {
+    padding: 25px 30px;
+    font-size: 30px;
+    border-radius: 50px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 4px 10px 0 #168dff, inset 0 4px 10px 0 #fff;
+    background: linear-gradient(180deg, #3347ff 0%, #044ffe 42%, #030036 100%);
+  }
+  .person-img {
+    display: none;
+  }
+  .prelend__right::before {
+    content: unset;
+  }
+  .logo1,
+  .logo2 {
+    width: 282px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 556px) {
+  .person-mobile {
+    background-position: top;
+  }
+  .prelend__left a {
+    font-size: 24px;
+    padding: 22px 40px;
+  }
+  .prelend__leftWrap {
+    gap: 40px;
+  }
+  .prelend__leftWrap h1 {
+    font-size: 22px;
+    text-align: center;
+  }
+  .logo1,
+  .logo2 {
+    width: 182px;
+    height: 40px;
+  }
+  .logo1 {
+    top: 5%;
+  }
+  .logo2 {
+    bottom: 8%;
+  }
+}
+
+@media (max-width: 414px) {
+  .person-mobile {
+    height: unset;
+  }
+}
+
+@media (max-width: 412px) and (max-height: 915px) {
+  .person-mobile {
+    height: 100vh;
+  }
+}
+
+@media (max-width: 414px) and (max-height: 896px) {
+  .person-mobile {
+    height: 100vh;
+  }
+}
+
+@media (max-width: 414px) and (max-height: 746px) {
+  .person-mobile {
+    height: unset;
+  }
+}
+
+@media (max-width: 412px) and (max-height: 914px) {
+  .person-mobile {
+    height: 100vh;
+  }
+}
+
+@media (max-width: 375px) and (max-height: 812px) {
+  .person-mobile {
+    height: 100vh;
+  }
+}
+
+@media (max-width: 375px) and (max-height: 667px) {
+  .person-mobile {
+    height: unset;
+  }
+}
